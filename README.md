@@ -18,6 +18,7 @@ The default deymap:
 [
   { "keys": ["super+shift+t", "super+shift+r"], "command": "traverse", "args": {"start": "root"} },
   { "keys": ["super+shift+t", "super+shift+h"], "command": "traverse", "args": {"start": "home"} },
-  { "keys": ["super+shift+t", "super+shift+p"], "command": "traverse", "args": {"start": "project"} }
+  { "keys": ["super+shift+t", "super+shift+p"], "command": "traverse", "args": {"start": "project"} },
+  { "keys": ["super+shift+t", "super+shift+l"], "command": "traverse", "args": {"start": "last"} }
 ]
 ```
