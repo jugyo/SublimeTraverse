@@ -14,11 +14,13 @@ class TraverseCommand(sublime_plugin.WindowCommand):
 
     def traverse(self, directory):
         directory = os.path.abspath(directory)
+
         filepaths = [f for f in iglob(os.path.join(directory, '*'))]
         filepaths += [f for f in iglob(os.path.join(directory, '.*'))]
+
         dirs_and_files = [os.path.basename(f) + "/" for f in filepaths if os.path.isdir(f)]
         dirs_and_files += [os.path.basename(f) for f in filepaths if os.path.isfile(f)]
-        print([directory, self.start_directory])
+
         if directory != self.start_directory:
             dirs_and_files = [".."] + dirs_and_files
 
