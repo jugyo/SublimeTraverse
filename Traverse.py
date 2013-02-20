@@ -14,13 +14,7 @@ class TraverseCommand(sublime_plugin.WindowCommand):
 
     def traverse(self, directory):
         directory = os.path.abspath(directory)
-
-        filepaths = [f for f in iglob(os.path.join(directory, '*'))]
-        filepaths += [f for f in iglob(os.path.join(directory, '.*'))]
-
-        dirs_and_files = [os.path.basename(f) + "/" for f in filepaths if os.path.isdir(f)]
-        dirs_and_files += [os.path.basename(f) for f in filepaths if os.path.isfile(f)]
-
+        dirs_and_files = self.find_dirs_and_files(directory)
         if directory != self.start_directory:
             dirs_and_files = [".."] + dirs_and_files
 
@@ -33,3 +27,10 @@ class TraverseCommand(sublime_plugin.WindowCommand):
                     self.traverse(dir_or_file)
 
         self.window.show_quick_panel(dirs_and_files, on_done)
+
+    def find_dirs_and_files(self, directory):
+        filepaths = [f for f in iglob(os.path.join(directory, '*'))]
+        filepaths += [f for f in iglob(os.path.join(directory, '.*'))]
+        dirs_and_files = [os.path.basename(f) + "/" for f in filepaths if os.path.isdir(f)]
+        dirs_and_files += [os.path.basename(f) for f in filepaths if os.path.isfile(f)]
+        return dirs_and_files
