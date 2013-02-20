@@ -13,5 +13,10 @@
     "caption": "Traverse: Traverse from Project",
     "command": "traverse",
     "args": {"start": "project"}
+  },
+  {
+    "caption": "Traverse: Traverse from Last",
+    "command": "traverse",
+    "args": {"start": "last"}
   }
 ]
