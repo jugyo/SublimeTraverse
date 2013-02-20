@@ -5,18 +5,21 @@ from glob import iglob
 class TraverseCommand(sublime_plugin.WindowCommand):
     def run(self, **kwargs):
         if kwargs['start'] == "root":
-            self.traverse("/")
+            self.start_directory = "/"
         elif kwargs['start'] == "home":
-            self.traverse(os.path.expanduser("~"))
+            self.start_directory = os.path.expanduser("~")
         elif kwargs['start'] == "project":
-            self.traverse(self.window.folders()[0])
+            self.start_directory = self.window.folders()[0]
+        self.traverse(self.start_directory)
 
     def traverse(self, directory):
+        directory = os.path.abspath(directory)
         filepaths = [f for f in iglob(os.path.join(directory, '*'))]
         filepaths += [f for f in iglob(os.path.join(directory, '.*'))]
         dirs_and_files = [os.path.basename(f) + "/" for f in filepaths if os.path.isdir(f)]
         dirs_and_files += [os.path.basename(f) for f in filepaths if os.path.isfile(f)]
-        if directory != "/":
+        print([directory, self.start_directory])
+        if directory != self.start_directory:
             dirs_and_files = [".."] + dirs_and_files
 
         def on_done(index):
