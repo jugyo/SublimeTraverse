@@ -1,0 +1,5 @@
+[
+  { "keys": ["super+shift+t", "super+shift+r"], "command": "traverse", "args": {"start": "root"} },
+  { "keys": ["super+shift+t", "super+shift+h"], "command": "traverse", "args": {"start": "home"} },
+  { "keys": ["super+shift+t", "super+shift+p"], "command": "traverse", "args": {"start": "project"} }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "caption": "Traverse: Traverse from Root",
+    "command": "traverse",
+    "args": {"start": "root"}
+  },
+  {
+    "caption": "Traverse: Traverse from Home",
+    "command": "traverse",
+    "args": {"start": "home"}
+  },
+  {
+    "caption": "Traverse: Traverse from Project",
+    "command": "traverse",
+    "args": {"start": "project"}
+  }
+]
