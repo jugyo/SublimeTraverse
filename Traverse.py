@@ -1,4 +1,4 @@
-import sublime_plugin
+import sublime, sublime_plugin
 import os
 from glob import iglob
 
@@ -33,7 +33,7 @@ class TraverseCommand(sublime_plugin.WindowCommand):
                 else:
                     self.traverse(dir_or_file)
 
-        self.window.show_quick_panel(dirs_and_files, on_done)
+        sublime.set_timeout(lambda: self.window.show_quick_panel(dirs_and_files, on_done), 1)
 
     def find_dirs_and_files(self, directory):
         filepaths = [f for f in iglob(os.path.join(directory, '*'))]
