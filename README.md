@@ -12,7 +12,7 @@ $ git clone https://github.com/jugyo/SublimeTraverse.git Traverse
 
 ## Usage
 
-The default deymap:
+The default keymap:
 
 ```json
 [
